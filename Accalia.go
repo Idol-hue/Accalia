@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"io/ioutil"
+	"net/http"
 	"os"
 	"sync"
 )
@@ -12,6 +13,9 @@ import (
 func main() {
 	var wg sync.WaitGroup
 	var filePath string
+	var websitePath string
+
+	flag.StringVar(&websitePath, "w", "", "Website URL for bruteforce. Default-*Empty String*")
 	flag.StringVar(&filePath, "f", "res/default.txt", "File location for bruteforce. Default-res/default.txt")
 	mode := flag.Int("m", 0, "Set mode of Accalia. Default-0. 0-Crawl")
 	workerGoNumber := flag.Int("g", 200, "Set the number of worker goroutines. Default-200")
@@ -20,6 +24,10 @@ func main() {
 	flag.Parse()
 	if *help == true {
 		helpMSG()
+	}
+	if websitePath == "" {
+		fmt.Println("Website URL is empty")
+		os.Exit(1)
 	}
 	if *silence == false {
 		header()
@@ -84,7 +92,11 @@ func readLineAndSendToChan(path *string, channel chan string, wg *sync.WaitGroup
 
 func crawlWorker(wg *sync.WaitGroup, words chan string) {
 	for word := range words {
-		fmt.Println(word)
+		response, err := http.Get(word)
+		checkError(err)
+		if response.StatusCode == 200 {
+			fmt.Println(word)
+		}
 		wg.Done()
 	}
 }
