@@ -70,10 +70,13 @@ func helpMSG() {
 	fmt.Println("        Accalia [arguments]\n")
 	fmt.Println("The arguments are:")
 	fmt.Println("        m       Set mode of Accalia. Default-0. 0-Crawl")
+	fmt.Println("        w       Website URL for bruteforce. Default-*Empty String*")
 	fmt.Println("        g       Set the number of worker goroutines. Default-200")
 	fmt.Println("        s       Show cool ASCII art? Default-true")
 	fmt.Println("        h       Do you want help? Default-false")
 	fmt.Println("        f       File location for bruteforce. Default-res/default.txt")
+	fmt.Println("\nExample:\n")
+	fmt.Println("        Accalia -w=https://trial.com -f=res/trial.txt -g=250\n")
 	os.Exit(0)
 }
 
