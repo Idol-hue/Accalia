@@ -26,4 +26,4 @@ Accalia can also find path traversal vulnerability.
 
 Type- ``` Accalia -h=true ``` for further help.
 
-# In Development!!
+# In Development!! Crawler works but not path traversal

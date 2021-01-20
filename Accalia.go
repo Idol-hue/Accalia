@@ -36,7 +36,7 @@ func main() {
 	if *mode == 0 {
 		words := make(chan string)
 		for goroutines := 0; goroutines < *workerGoNumber; goroutines++ {
-			go crawlWorker(&wg, words)
+			go crawlWorker(&wg, words, &websitePath)
 		}
 		readLineAndSendToChan(&filePath, words, &wg)
 	}
@@ -90,12 +90,12 @@ func readLineAndSendToChan(path *string, channel chan string, wg *sync.WaitGroup
 	wg.Wait()
 }
 
-func crawlWorker(wg *sync.WaitGroup, words chan string) {
+func crawlWorker(wg *sync.WaitGroup, words chan string, rootPath *string) {
 	for word := range words {
-		response, err := http.Get(word)
+		response, err := http.Get(*rootPath + word)
 		checkError(err)
 		if response.StatusCode == 200 {
-			fmt.Println(word)
+			fmt.Println(*rootPath + word)
 		}
 		wg.Done()
 	}
