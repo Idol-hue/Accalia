@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"strconv"
 	"sync"
 )
 
@@ -34,6 +35,7 @@ func main() {
 	}
 
 	if *mode == 0 {
+		fmt.Println("Creating " + strconv.Itoa(*workerGoNumber) + " crawl worker threads")
 		words := make(chan string)
 		for goroutines := 0; goroutines < *workerGoNumber; goroutines++ {
 			go crawlWorker(&wg, words, &websitePath)
