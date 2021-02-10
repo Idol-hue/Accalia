@@ -21,7 +21,7 @@ func main() {
 	var websitePath string
 
 	flag.StringVar(&websitePath, "w", "", "Website URL for bruteforce (default *Empty String*)")
-	flag.StringVar(&filePath, "f", "res/Default.txt", "File location for bruteforce")
+	flag.StringVar(&filePath, "f", "res/default.txt", "File location for bruteforce")
 	workerGoNumber := flag.Int("g", 200, "Set the number of worker goroutines")
 	silence := flag.Bool("s", false, "Show cool ASCII art? (default true)")
 	flag.Parse()
