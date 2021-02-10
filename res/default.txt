@@ -1,3 +1,4 @@
+/sites/edchemy.kumarans.org/atom_banking_terms.pdf
 /.cache/
 /.cache/.dataModel
 /.cache/.wsdlDataModel

@@ -16,7 +16,7 @@
 
 ## Purpose
 
-This tool is meant to for crawling a website to find hidden files and directory. It uses golang, since concurrency is important to Accalia.
+This tool is meant for crawling a website to find hidden files and directory. It uses golang, since concurrency is important to Accalia.
 
 Accalia can also find path traversal vulnerability.
 
@@ -24,6 +24,4 @@ Accalia can also find path traversal vulnerability.
 
 ``` Accalia [arguments] ```
 
-Type- ``` Accalia -h=true ``` for further help.
-
-# In Development!! Crawler works but not path traversal
+Type- ``` Accalia -help=true ``` for further help.
